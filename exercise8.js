@@ -1,23 +1,34 @@
-
-function palindrome(kata) {
+function pasanganTerbesar(num) {
     // you can only write your code here!
-    var hasil = ''
-    for ( var i = kata.length-1; i >= 0; i--){
-        hasil += kata[i]
-    }
-    if ( hasil == kata) {
-          return true
-    }
+    var str = ''
+    str = num.toString()
+    var rubahStr = ''
+    rubahStr = str.split('')
 
-    else {
-        return false
-    }
+    var arrTemp = []
+    for ( var i = 0; i < rubahStr.length; i= i +2 ){
     
-}
+         arrTemp.push(parseInt(rubahStr[i] + rubahStr[i + 1]))
+        //  console.log(arrTemp);
 
+    }
+    for ( var i = 0; i < rubahStr.length; i++){
+        if (i == rubahStr.length-1){
+            break;
+        }
+        arrTemp.push(parseInt (rubahStr[i] + rubahStr[i + 1]))
+    }
+    var hasil = arrTemp.sort(function(a, b){return b-a});
+       
+    
+    return hasil[0];
+  }
+  
+ 
+ 
   // TEST CASES
-  console.log(palindrome('katak')); // true
-  console.log(palindrome('blanket')); // false
-  console.log(palindrome('civic')); // true
-  console.log(palindrome('kasur rusak')); // true
-  console.log(palindrome('mister')); // false
+  console.log(pasanganTerbesar(641573)); // 73
+  console.log(pasanganTerbesar(12783456)); // 83
+  console.log(pasanganTerbesar(910233)); // 91
+  console.log(pasanganTerbesar(71856421)); // 85
+  console.log(pasanganTerbesar(79918293)); // 99
